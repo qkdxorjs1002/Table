@@ -6,6 +6,7 @@
     Dim c2 As Integer
     Dim c2_bak As Integer
     Dim y As Integer
+    Dim tick As Integer
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -21,29 +22,12 @@
         upper = peo.Text
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        wtf.Text = ""
-        Randomize()
-        randomValue = CInt(Math.Floor((upper - lower + 1) * Rnd())) + lower
-        wtf.Text = randomValue
-        If randomValue < 10 Then
-            RichTextBox1.Text += "  " + "0" + randomValue
-        Else
-            RichTextBox1.Text += "  " + randomValue
-        End If
-        If tc = peo.Text - 1 Then
-            tc = 0
-            Timer1.Enabled = False
-        Else
-            tc = tc + 1
-        End If
-        If tc = column.Text * c2 Then
-            RichTextBox1.Text += Chr(13)
-            c2 = c2 + 1
-        End If
-    End Sub
-
     Private Sub column_TextChanged(sender As Object, e As EventArgs) Handles column.TextChanged
+        If column.Text = "" Then
+            column.Text = 0
+        ElseIf column.Text = " " Then
+            column.Text = 0
+        End If
         c2 = 1
         c2_bak = c2
         y = column.Text
@@ -56,11 +40,34 @@
             Else
                 Dim result = MessageBox.Show("이미 산출된 값을 초기화한 후에" + Chr(13) + "진행 하시겠습니까?", "알림", MessageBoxButtons.YesNo)
                 If result = DialogResult.Yes Then
+                    tick = 0
                     c2 = c2_bak
                     RichTextBox1.Text = ""
-                    Timer1.Enabled = True
-                Else
-                    Timer1.Enabled = True
+                    Do While tick < upper
+                        If tick = 0 Then
+                            Randomize()
+                            randomValue = CInt(Math.Floor((upper - lower + 1) * Rnd())) + lower
+                            If randomValue < 10 Then
+                                RichTextBox1.Text += "  " + "0" + randomValue
+                            Else
+                                RichTextBox1.Text += "  " + randomValue
+                            End If
+                        End If
+                        Do While RichTextBox1.Text.IndexOf(randomValue) > -1
+                            Randomize()
+                            randomValue = CInt(Math.Floor((upper - lower + 1) * Rnd())) + lower
+                        Loop
+                        If randomValue < 10 Then
+                            RichTextBox1.Text += "  " + "0" + randomValue
+                        Else
+                            RichTextBox1.Text += "  " + randomValue
+                        End If
+                        tick = tick + 1
+                        If tick = column.Text * c2 Then
+                            RichTextBox1.Text += Chr(13)
+                            c2 = c2 + 1
+                        End If
+                    Loop
                 End If
             End If
         Else

@@ -22,11 +22,8 @@ Partial Class Form1
     '코드 편집기를 사용하여 수정하지 마십시오.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.peo = New System.Windows.Forms.TextBox()
-        Me.wtf = New System.Windows.Forms.TextBox()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.count = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.column = New System.Windows.Forms.TextBox()
@@ -57,18 +54,6 @@ Partial Class Form1
         Me.peo.Size = New System.Drawing.Size(52, 21)
         Me.peo.TabIndex = 1
         Me.peo.Text = "0"
-        '
-        'wtf
-        '
-        Me.wtf.Location = New System.Drawing.Point(12, 37)
-        Me.wtf.Name = "wtf"
-        Me.wtf.ReadOnly = True
-        Me.wtf.Size = New System.Drawing.Size(37, 21)
-        Me.wtf.TabIndex = 3
-        '
-        'Timer1
-        '
-        Me.Timer1.Interval = 1
         '
         'count
         '
@@ -171,7 +156,6 @@ Partial Class Form1
         Me.Controls.Add(Me.column)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.count)
-        Me.Controls.Add(Me.wtf)
         Me.Controls.Add(Me.peo)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.MenuStrip1)
@@ -187,8 +171,6 @@ Partial Class Form1
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents peo As System.Windows.Forms.TextBox
-    Friend WithEvents wtf As System.Windows.Forms.TextBox
-    Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents count As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents column As System.Windows.Forms.TextBox
