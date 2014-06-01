@@ -35,6 +35,7 @@ Partial Class Form1
         Me.OpenSourceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -145,13 +146,24 @@ Partial Class Form1
         Me.RichTextBox1.TabIndex = 12
         Me.RichTextBox1.Text = ""
         '
+        'RichTextBox2
+        '
+        Me.RichTextBox2.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RichTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.RichTextBox2.Font = New System.Drawing.Font("맑은 고딕", 15.0!)
+        Me.RichTextBox2.Location = New System.Drawing.Point(199, 200)
+        Me.RichTextBox2.Name = "RichTextBox2"
+        Me.RichTextBox2.ReadOnly = True
+        Me.RichTextBox2.Size = New System.Drawing.Size(72, 113)
+        Me.RichTextBox2.TabIndex = 13
+        Me.RichTextBox2.Text = ""
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(360, 448)
-        Me.Controls.Add(Me.RichTextBox1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.column)
         Me.Controls.Add(Me.Label2)
@@ -159,6 +171,8 @@ Partial Class Form1
         Me.Controls.Add(Me.peo)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.RichTextBox1)
+        Me.Controls.Add(Me.RichTextBox2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
@@ -182,5 +196,6 @@ Partial Class Form1
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
     Friend WithEvents OpenSourceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RichTextBox2 As System.Windows.Forms.RichTextBox
 
 End Class

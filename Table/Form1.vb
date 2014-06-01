@@ -1,8 +1,9 @@
 ﻿Public Class Form1
+    Dim i As Integer, j As Integer
     Dim randomValue As String
     Dim upper As Integer
     Dim lower As Integer
-    Dim tc As Integer
+    Dim tc As String
     Dim c2 As Integer
     Dim c2_bak As Integer
     Dim y As Integer
@@ -43,32 +44,24 @@
                     tick = 0
                     c2 = c2_bak
                     RichTextBox1.Text = ""
-                    Do While tick < upper
-                        If tick = 0 Then
-                            Randomize()
-                            randomValue = CInt(Math.Floor((upper - lower + 1) * Rnd())) + lower
-                            If randomValue < 10 Then
-                                RichTextBox1.Text += "  " + "0" + randomValue
-                            Else
-                                RichTextBox1.Text += "  " + randomValue
-                            End If
-                        End If
-                        Do While RichTextBox1.Text.IndexOf(randomValue) > -1
-                            Randomize()
-                            randomValue = CInt(Math.Floor((upper - lower + 1) * Rnd())) + lower
-                        Loop
-                        If randomValue < 10 Then
-                            RichTextBox1.Text += "  " + "0" + randomValue
-                        Else
-                            RichTextBox1.Text += "  " + randomValue
-                        End If
-                        tick = tick + 1
-                        If tick = column.Text * c2 Then
-                            RichTextBox1.Text += Chr(13)
-                            c2 = c2 + 1
-                        End If
-                    Loop
                 End If
+                Randomize()
+                For count1 = 1 To upper
+                    randomValue = CInt(Int((upper * Rnd()) + 1))
+                    If InStr(1, RichTextBox1.Text, randomValue) Then '''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+                    End If
+                    If randomValue < 10 Then
+                        RichTextBox1.Text += "  " + "0" + randomValue
+                    Else
+                        RichTextBox1.Text += "  " + randomValue
+                    End If
+                    tick = tick + 1
+                    If tick = column.Text * c2 Then
+                        RichTextBox1.Text += Chr(13)
+                        c2 = c2 + 1
+                    End If
+                Next
             End If
         Else
             MessageBox.Show("인원수와 열수를 대입해주세요." + Chr(13) + "(정수만 할당해주세요.)")
