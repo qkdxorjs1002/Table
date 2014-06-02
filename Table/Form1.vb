@@ -37,7 +37,7 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If upper > 0 Then
             If y <= 0 Then
-                MessageBox.Show("인원수와 열수를 대입해주세요." + Chr(13) + "(정수만 할당해주세요.)")
+                MessageBox.Show("인원수와 열수를 대입해주세요." + Chr(13) + "(1000 이내의 정수만 할당해주세요.)")
             Else
                 Dim result = MessageBox.Show("이미 산출된 값을 초기화한 후에" + Chr(13) + "진행 하시겠습니까?", "알림", MessageBoxButtons.YesNo)
                 If result = DialogResult.Yes Then
@@ -48,12 +48,11 @@
                 Randomize()
                 For count1 = 1 To upper
                     randomValue = CInt(Int((upper * Rnd()) + 1))
-                    If InStr(1, RichTextBox1.Text, randomValue) Then '''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-                    End If
                     If randomValue < 10 Then
+                        RichTextBox1.Text += "  " + "00" + randomValue
+                    ElseIf 10 <= randomValue < 100 Then
                         RichTextBox1.Text += "  " + "0" + randomValue
-                    Else
+                    ElseIf randomValue >= 100 Then
                         RichTextBox1.Text += "  " + randomValue
                     End If
                     tick = tick + 1
@@ -64,7 +63,7 @@
                 Next
             End If
         Else
-            MessageBox.Show("인원수와 열수를 대입해주세요." + Chr(13) + "(정수만 할당해주세요.)")
+            MessageBox.Show("인원수와 열수를 대입해주세요." + Chr(13) + "(1000 이내의 정수만 할당해주세요.)")
         End If
     End Sub
 End Class
