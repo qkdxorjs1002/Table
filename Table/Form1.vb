@@ -8,6 +8,7 @@
     Dim c2_bak As Integer
     Dim y As Integer
     Dim tick As Integer
+    Dim richcounter As Integer
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -39,15 +40,22 @@
             If y <= 0 Then
                 MessageBox.Show("인원수와 열수를 대입해주세요." + Chr(13) + "(1000 이내의 정수만 할당해주세요.)")
             Else
-                Dim result = MessageBox.Show("이미 산출된 값을 초기화한 후에" + Chr(13) + "진행 하시겠습니까?", "알림", MessageBoxButtons.YesNo)
-                If result = DialogResult.Yes Then
-                    tick = 0
-                    c2 = c2_bak
-                    RichTextBox1.Text = ""
+                If richcounter = 1 Then
+                    Dim result = MessageBox.Show("이미 산출된 값을 초기화한 후에" + Chr(13) + "진행 하시겠습니까?", "알림", MessageBoxButtons.YesNo)
+                    If result = DialogResult.Yes Then
+                        tick = 0
+                        c2 = c2_bak
+                        RichTextBox1.Text = ""
+                    End If
                 End If
+                richcounter = 1
                 Randomize()
                 For count1 = 1 To upper
+redo:
                     randomValue = CInt(Int((upper * Rnd()) + 1))
+                    If InStr(RichTextBox1.Text, randomValue) Then
+                        GoTo redo
+                    End If
                     If randomValue < 10 Then
                         RichTextBox1.Text += "  " + "00" + randomValue
                     ElseIf 10 <= randomValue < 100 Then
